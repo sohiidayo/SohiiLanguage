@@ -213,7 +213,7 @@ run_do是多字词指令，能将object定义的对象和python中定义的函�
 run_do + 全局定义函数名称 + ( + 参数对象1 + 参数对象2 + ... + ) + 用于接收结果的对象      
 
 ### return 
-用于句子的返回值，使用ruturn 后立刻终止运行。如果没有父句子，则在python中运行的run函数对象。如果是子句，则将覆盖掉run_run和run_with接收对象位指示的对象。      
+用于句子的返回值，使用ruturn 后立刻终止运行。如果没有父句子，则在python中运行的run函数返回对象。如果是子句，则将覆盖掉run_run和run_with接收对象位指示的对象。      
 return + 返回的对象     
 
 ### if
@@ -235,4 +235,31 @@ run(a+b+c+d+e+f)
 如果相等 跳转至C      
 不可比 or 转化失败 直接执行下一语句      
 if + 比较对象1 + 比较对象2 对象1大时跳转点 对象2大时跳转点 对象相对跳转点      
+
+##样例
+###求计算值
+随机生成0-10之间的数字，直到生成10，记录生成次数。重复100次，求平局次数。
+```python
+a = " logging"
+# obj0 随机最小数 obj1 随机最大数 obj2 计算值 obj3 次数 obj4 累计 
+b = " object _ object obj0 object obj1 object obj2 object obj3 object obj4"
+c = " obj_set obj0 0 obj_set obj1 10 obj_set obj2 0 obj_set obj3 0 obj_set obj4 0"
+d = " point Main run_do random_integer ( obj0 obj1 ) obj2 run_do add ( obj4 obj2 ) obj4 if obj2 obj1 A B C"
+e = " point A point B goto Main"
+f = " point C return obj4"
+com = (b+c+d+e+f).replace(" ","$")
+# obj0 当前计算次数 obj1 最多计算次数 obj2 累积计算值 obj3 当前计算值 obj4 1 obj5 计算平均值
+b = " object _ object obj0 object obj1 object obj2 object obj3 object obj4 object obj5"
+c = " obj_set obj0 0 obj_set obj1 100 obj_set obj2 0 obj_set obj3 0 obj_set obj4 1 obj_set obj5 0"
+d = f" point Main run_run $ {com} obj3 run_do add ( obj4 obj0 ) obj0 run_do add ( obj2 obj3 ) obj2 if obj0 obj1 A B C"
+e = " point A point B goto Main"
+f = " point C obj_print obj3 obj_print obj0 run_do div_float ( obj3 obj1  ) obj5 return obj5"
+f = " point C run_do div_float ( obj3 obj1  ) obj5 return obj5"
+a = b+c+d+e+f
+run(a)
+```
+
+```Sohii
+ object _ object obj0 object obj1 object obj2 object obj3 object obj4 object obj5 obj_set obj0 0 obj_set obj1 100 obj_set obj2 0 obj_set obj3 0 obj_set obj4 1 obj_set obj5 0 point Main run_run $ $object$_$object$obj0$object$obj1$object$obj2$object$obj3$object$obj4$obj_set$obj0$0$obj_set$obj1$10$obj_set$obj2$0$obj_set$obj3$0$obj_set$obj4$0$point$Main$run_do$random_integer$($obj0$obj1$)$obj2$run_do$add$($obj4$obj2$)$obj4$if$obj2$obj1$A$B$C$point$A$point$B$goto$Main$point$C$return$obj4 obj3 run_do add ( obj4 obj0 ) obj0 run_do add ( obj2 obj3 ) obj2 if obj0 obj1 A B C point A point B goto Main point C run_do div_float ( obj3 obj1  ) obj5 return obj5
+```
 
