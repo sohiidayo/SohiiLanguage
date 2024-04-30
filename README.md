@@ -48,30 +48,30 @@ Sohii语言以句子为程序单位。句子由单个或多个指令构成，指
     
 ## 语法   
 运行关键字语法时，程序运行位置始终是关键字的位置，运行结束后，跳转到下一个指令的开头。下文的" +"均为空格      
-#### log
+### log
 
 单字词指令。     
 在控制台输出下一个指令的运行详细步骤，如果是无需返回信息的指令延续到下一指令。      
 
-#### logging and stoplog
+### logging and stoplog
 
 均为单字词指令      
 使用logging后接下来运行的步骤均会在控制台输出详细步骤，直到运行到stoplog关键字。      
 
-#### stop 
+### stop 
 
 单字词指令。      
 解释器执行stop指令时立刻结束，并且不会返回任何值。      
 在输入指令末尾不为stop时，解释器自动在后位添加stop。       
 
-#### delay
+### delay
 ```python
 a = "delay 0.5"   
 run(a)
 ```
 双字词指令 
 用于阻塞进程的延时 
-#### print
+### print
 ```python
 a = "print OIiaioooooiai"   
 run(a)
@@ -79,7 +79,7 @@ run(a)
 双字词指令      
 用于打印字符串      
 
-#### do
+### do
 ```python
 a = " do print123"
 b = " do python_add ( 1 2 3 )"
@@ -93,7 +93,7 @@ run(a+b+c)
 2为不定字词指令：do + 全局函数名称 + ( + 参数0 + 参数1 + ... + ) 。    
 3为三字词模式，参数实际为一个字词，使用 "," 连接：do + 全局函数名称 + unzip + 参数1,参数2,,...    
 
-#### thread start wait
+### thread start wait
 ```python
 a = " thread print123"
 b = " thread python_add ( 1 2 3 )"
@@ -110,7 +110,7 @@ wait是等待所有的thread函数执行完毕后才进行下一指令。
 3为三字词模式，参数实际为一个字词，使用 "," 连接：do + 全局函数名称 + unzip + 参数1,参数2,,...       
 4start和wait均为单字词指令。      
 
-#### index 
+### index 
 index     
 控制台输出当前指令运行位置，无论有没有log的影响都会输出运行的位置。      
 
@@ -136,7 +136,7 @@ run(a)
 3 jump 为无条件跳转双字词指令。能立即修改程序运行的字词位置。      
 **注意：jump跳转很不稳定，尤其在动态修改指令和 index log 等调试用指令的影响下位置常常发生偏移**      
 
-#### modify
+### modify
 ```python
 #执行一遍print 1后执行的是print 2
 a = "point A print 1 modify 3 2 goto A"
@@ -149,7 +149,7 @@ run(a)
 ```
 modify 为三字词指令，用于运行时修改运行的指令 modify + 需要修改字词索引 + 修改的字符串      
 
-#### object obj_set obj_print
+### object obj_set obj_print
 ```python
 #定义对象A后，给A赋值字符串9999，最后输出A
 a = "logging object A obj_set A 9999 obj_print A"
@@ -161,7 +161,7 @@ run(a)
 2 obj_set 三字词指令，使用**字符串**赋予用户标识符标识所指对象的值 obj_set A OIiaioooooiai。      
 3 obj_print 双字词指令，如同在python中print一样输出这个对象。      
 
-#### run run_run run_with
+### run run_run run_with
 ```python
 #使用空格替换子句中的$字符，得到一条新的句子。并且运行这条句子。
 #pythoy_thread是在全局定义的函数名。
@@ -191,7 +191,7 @@ run_with为run_run的升级版本。不定字词指令。
 括号内包含替换规则，作用是在子句解压前执行一系列的替换规则。括号内参数个数均为偶数。索引为偶数的为替换标识符，下一位为替换后的字符串。
 run_with + 分割符号 + ( 替代符号1 替代用文字1 替代符号2 替代用文字1 ... ...) + 子句 + 接收对象的指示符
 
-#### run_do
+### run_do
 运行python全局定义函数的指令。      
 ```python
 #random_integer是在全局定义的函数名,作用是接受整形or浮点型or字符串型的数值，生成两者之间的整数字符串。      
@@ -204,7 +204,7 @@ run(a+b+c)
 run_do是多字词指令，能将object定义的对象和python中定义的函数交互。      
 run_do + 全局定义函数名称 + ( + 参数对象1 + 参数对象2 + ... + ) + 用于接收结果的对象      
 
-#### return 
+### return 
 用于句子的返回值，使用ruturn 后立刻终止运行。如果没有父句子，则在python中运行的run函数对象。如果是子句，则将覆盖掉run_run和run_with接收对象位指示的对象。      
 return + 返回的对象     
 
