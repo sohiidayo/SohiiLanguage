@@ -244,22 +244,22 @@ a = " logging"
 # obj0 随机最小数 obj1 随机最大数 obj2 计算值 obj3 次数 obj4 累计 
 b = " object _ object obj0 object obj1 object obj2 object obj3 object obj4"
 c = " obj_set obj0 0 obj_set obj1 10 obj_set obj2 0 obj_set obj3 0 obj_set obj4 0"
-d = " point Main run_do random_integer ( obj0 obj1 ) obj2 run_do add ( obj4 obj2 ) obj4 if obj2 obj1 A B C"
+d = " point Main run_do s_random_integer ( obj0 obj1 ) obj2 run_do s_add ( obj4 obj2 ) obj4 if obj2 obj1 A B C"
 e = " point A point B goto Main"
 f = " point C return obj4"
 com = (b+c+d+e+f).replace(" ","$")
 # obj0 当前计算次数 obj1 最多计算次数 obj2 累积计算值 obj3 当前计算值 obj4 1 obj5 计算平均值
 b = " object _ object obj0 object obj1 object obj2 object obj3 object obj4 object obj5"
 c = " obj_set obj0 0 obj_set obj1 100 obj_set obj2 0 obj_set obj3 0 obj_set obj4 1 obj_set obj5 0"
-d = f" point Main run_run $ {com} obj3 run_do add ( obj4 obj0 ) obj0 run_do add ( obj2 obj3 ) obj2 if obj0 obj1 A B C"
+d = f" point Main run_run $ {com} obj3 run_do s_add ( obj4 obj0 ) obj0 run_do s_add ( obj2 obj3 ) obj2 if obj0 obj1 A B C"
 e = " point A point B goto Main"
-f = " point C obj_print obj3 obj_print obj0 run_do div_float ( obj3 obj1  ) obj5 return obj5"
-f = " point C run_do div_float ( obj3 obj1  ) obj5 return obj5"
-a = b+c+d+e+f
-run(a)
+f = " point C obj_print obj3 obj_print obj0 run_do s_div_float ( obj3 obj1  ) obj5 return obj5"
+f = " point C run_do s_div_float ( obj3 obj1  ) obj5 return obj5"
+a = a+b+c+d+e+f
+print(a)
 ```
-
-```Sohii
- object _ object obj0 object obj1 object obj2 object obj3 object obj4 object obj5 obj_set obj0 0 obj_set obj1 100 obj_set obj2 0 obj_set obj3 0 obj_set obj4 1 obj_set obj5 0 point Main run_run $ $object$_$object$obj0$object$obj1$object$obj2$object$obj3$object$obj4$obj_set$obj0$0$obj_set$obj1$10$obj_set$obj2$0$obj_set$obj3$0$obj_set$obj4$0$point$Main$run_do$random_integer$($obj0$obj1$)$obj2$run_do$add$($obj4$obj2$)$obj4$if$obj2$obj1$A$B$C$point$A$point$B$goto$Main$point$C$return$obj4 obj3 run_do add ( obj4 obj0 ) obj0 run_do add ( obj2 obj3 ) obj2 if obj0 obj1 A B C point A point B goto Main point C run_do div_float ( obj3 obj1  ) obj5 return obj5
+#### Sohii
+```
+logging object _ object obj0 object obj1 object obj2 object obj3 object obj4 object obj5 obj_set obj0 0 obj_set obj1 100 obj_set obj2 0 obj_set obj3 0 obj_set obj4 1 obj_set obj5 0 point Main run_run $ $object$_$object$obj0$object$obj1$object$obj2$object$obj3$object$obj4$obj_set$obj0$0$obj_set$obj1$10$obj_set$obj2$0$obj_set$obj3$0$obj_set$obj4$0$point$Main$run_do$s_random_integer$($obj0$obj1$)$obj2$run_do$s_add$($obj4$obj2$)$obj4$if$obj2$obj1$A$B$C$point$A$point$B$goto$Main$point$C$return$obj4 obj3 run_do s_add ( obj4 obj0 ) obj0 run_do s_add ( obj2 obj3 ) obj2 if obj0 obj1 A B C point A point B goto Main point C run_do s_div_float ( obj3 obj1  ) obj5 return obj5
 ```
 
