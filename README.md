@@ -73,7 +73,7 @@ run(a)
 用于阻塞进程的延时 
 ### print
 ```python
-a = "print OIiaioooooiai"   
+a = "print hello,world"   
 run(a)
 ```
 双字词指令      
