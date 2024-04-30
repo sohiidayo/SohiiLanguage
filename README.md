@@ -236,9 +236,9 @@ run(a+b+c+d+e+f)
 不可比 or 转化失败 直接执行下一语句      
 if + 比较对象1 + 比较对象2 对象1大时跳转点 对象2大时跳转点 对象相对跳转点      
 
-##样例
-###求计算值
-随机生成0-10之间的数字，直到生成10，记录生成次数。重复100次，求平局次数。
+## 样例
+
+### 随机生成0-10之间的数字，直到生成10，累计生成的数。重复100次，求平均值。    
 ```python
 a = " logging"
 # obj0 随机最小数 obj1 随机最大数 obj2 计算值 obj3 次数 obj4 累计 
@@ -261,5 +261,24 @@ print(a)
 #### Sohii
 ```
 logging object _ object obj0 object obj1 object obj2 object obj3 object obj4 object obj5 obj_set obj0 0 obj_set obj1 100 obj_set obj2 0 obj_set obj3 0 obj_set obj4 1 obj_set obj5 0 point Main run_run $ $object$_$object$obj0$object$obj1$object$obj2$object$obj3$object$obj4$obj_set$obj0$0$obj_set$obj1$10$obj_set$obj2$0$obj_set$obj3$0$obj_set$obj4$0$point$Main$run_do$s_random_integer$($obj0$obj1$)$obj2$run_do$s_add$($obj4$obj2$)$obj4$if$obj2$obj1$A$B$C$point$A$point$B$goto$Main$point$C$return$obj4 obj3 run_do s_add ( obj4 obj0 ) obj0 run_do s_add ( obj2 obj3 ) obj2 if obj0 obj1 A B C point A point B goto Main point C run_do s_div_float ( obj3 obj1  ) obj5 return obj5
+```
+
+### 随机延时
+随机生成0-10之间的数，如果数字是10，则退出程序，如果是其他数，则延时这么多秒的时间，循环整个过程。       
+```python
+a = " logging"
+b = " object _ object obj0 object obj1 object obj2 object obj3 object obj4 obj_set obj0 0 obj_set obj1 10 obj_set obj3 0 obj_set obj4 1"
+c = " point A print ------- run_do random_integer ( obj0 obj1 ) obj2 print 随机数生成器[0-10]生成了 obj_print obj2 run_do add ( obj3 obj4 ) obj3"
+d = " if obj1 obj2 B B C"
+f = " point B print 生成数字不等于10 print 延时这么多秒哦喵 run_do delay ( obj2 ) _ goto A"
+g = " point C if obj3 obj4 D D F point D print 生成数字等于10,你重试了 obj_print obj3 print 次 print ------- goto G" 
+h = " point F print 幸运的你只用了一次！！！ goto H"
+i = " point G print 希望你下次次数更少哦 point H return obj3"
+a = b+c+d+f+g+h+i
+run(a)
+```
+#### Sohii
+```
+logging object _ object obj0 object obj1 object obj2 object obj3 object obj4 obj_set obj0 0 obj_set obj1 10 obj_set obj3 0 obj_set obj4 1 point A print ------- run_do random_integer ( obj0 obj1 ) obj2 print 随机数生成器[0-10]生成了 obj_print obj2 run_do add ( obj3 obj4 ) obj3 if obj1 obj2 B B C point B print 生成数字不等于10 print 延时这么多秒哦喵 run_do delay ( obj2 ) _ goto A point C if obj3 obj4 D D F point D print 生成数字等于10,你重试了 obj_print obj3 print 次 print ------- goto G point F print 幸运的你只用了一次！！！ goto H point G print 希望你下次次数更少哦 point H return obj3
 ```
 
