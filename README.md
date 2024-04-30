@@ -208,4 +208,23 @@ run_do + 全局定义函数名称 + ( + 参数对象1 + 参数对象2 + ... + ) 
 用于句子的返回值，使用ruturn 后立刻终止运行。如果没有父句子，则在python中运行的run函数对象。如果是子句，则将覆盖掉run_run和run_with接收对象位指示的对象。      
 return + 返回的对象     
 
+### if
+```python    
+a = " object obj0 object obj1 obj_set obj0 0 obj_set obj1 1  "
+b = " if obj0 obj1 A B C print 4 goto D "
+c = " point A print 1 goto D "
+d = " point B print 2 goto D "
+e = " point C print 3 goto D
+f = " point D return obj0
+run(a+b+c+d+e+f)
+```     
+分支语句      
+对比时obj1和obj2均会被转化为整形      
+不支持直接输入数字进行比较      
+支持object obj object obj1 if obj obj1 A B C。不支持object obj if obj 0 A B       
+如果obj1大于obj2 则跳转到A      
+如果obj2大于obj1 则跳转到B      
+如果相等 跳转至C      
+不可比 or 转化失败 直接执行下一语句      
+if + 比较对象1 + 比较对象2 对象1大时跳转点 对象2大时跳转点 对象相对跳转点      
 
