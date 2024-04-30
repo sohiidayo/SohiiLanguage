@@ -5,15 +5,13 @@
 ~~好玩~~   
 ....
 ```
+
 Sohii Language 0.0.1
 -->print hello,world
 hello,world
+-->
+
 ```
-
-
-
-
-
 
 ## 语法概念
 Sohii语言以句子为程序单位。句子由单个或多个指令构成，指令由单个或多个字词和空格构成。
