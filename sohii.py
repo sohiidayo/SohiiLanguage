@@ -1,5 +1,6 @@
 import time
 import threading
+sohii_Language_version ="0.0.1"
 
 #标准函数库
 #是Sohii语言标准函数库
@@ -374,3 +375,15 @@ def run(TaskList,split_signal=" "):
         else:
             print("error:不明的指令" + "->"+ TaskKey)
             TaskIndex += 1
+
+def sohii_cmd():
+    print("Sohii Language " + sohii_Language_version)
+    while(1):
+        try:
+            command=input("-->")
+            run(command)
+        except:
+            pass
+        
+if __name__=='__main__':
+    sohii_cmd()
