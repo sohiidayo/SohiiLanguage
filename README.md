@@ -58,8 +58,17 @@ Sohii语言以句子为程序单位。句子由单个或多个指令构成，指
 21. return
 22. if
 23. unzip
-24. (
-25. )
+24. sohii_v
+25. sohii
+26. int
+27. str
+28. obj
+29. float
+30. set
+31. input
+32. copy
+33. (
+34. )
 
 
     
@@ -94,7 +103,7 @@ a = "print hello,world"
 run(a)
 ```
 双字词指令      
-用于打印字符串      
+用于打印字符串   
 
 ### do
 ```python
@@ -178,6 +187,19 @@ run(a)
 2 obj_set 三字词指令，使用**字符串**赋予用户标识符标识所指对象的值 obj_set A OIiaioooooiai。      
 3 obj_print 双字词指令，如同在python中print一样输出这个对象。      
 
+### int str obj float
+
+int/str/obj A T 等同于 object A obj_set A T      
+均为双字词指令。功能完全相同。关键字承担了标识类型的工作。
+
+### copy
+用于复制对象。
+sohii：
+```
+int A 1 1 int B 2 int C 3 copy A AA AAA to A B C obj_print A obj_print B obj_print C
+```
+不定字词指令copy A B C ... to a b c ...。按照次序依次复制A,B,C, ... 的值到 a,b,c,...       
+
 ### run run_run run_with
 ```python
 #使用空格替换子句中的$字符，得到一条新的句子。并且运行这条句子。
@@ -237,13 +259,30 @@ run(a+b+c+d+e+f)
 ```     
 分支语句      
 对比时obj1和obj2均会被转化为整形      
-不支持直接输入数字进行比较      
-支持object obj object obj1 if obj obj1 A B C。不支持object obj if obj 0 A B       
 如果obj1大于obj2 则跳转到A      
 如果obj2大于obj1 则跳转到B      
 如果相等 跳转至C      
 不可比 or 转化失败 直接执行下一语句      
-if + 比较对象1 + 比较对象2 对象1大时跳转点 对象2大时跳转点 对象相对跳转点      
+if + 比较对象1 + 比较对象2 对象1大时跳转点 对象2大时跳转点 对象相对跳转点    
+**在sohii0.0.2前，不支持直接输入数字进行比较**
+不支持这样的写法 object obj if obj 0 A B ，而是object obj object obj1 if obj obj1 A B C。
+
+### input 
+
+```sohii
+str A input A print A
+```
+双字词指令：从控制台获取字符串。
+
+### sohii sohii_v
+```sohii
+sohii
+```
+```sohii
+int i1 9 int i2 9 int i3 9 sohii_v i1 i2 i3 obj_print i1 obj_print i2 obj_print i3
+```
+sohii指令在控制台输出版本信息
+sohii_v指令为四字词指令将版本信息按右到左的次序赋值给3个对象。
 
 ## 样例
 
