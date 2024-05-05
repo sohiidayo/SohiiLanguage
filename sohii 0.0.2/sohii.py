@@ -99,8 +99,6 @@ def run(TaskList,split_signal=" "):
     TaskList = [s for s in TaskList if s]
     if TaskList and TaskList[-1] != "stop": 
         TaskList.append("stop") 
-    def logging():
-        pass
     NoStop = 1
     LogStep = 0
     Logging = 0
@@ -127,6 +125,7 @@ def run(TaskList,split_signal=" "):
         elif TaskKey == "logging":
             Logging = 1
             TaskIndex += 1
+
         elif TaskKey == "stoplog":
             Logging = 0
             TaskIndex += 1
@@ -174,7 +173,6 @@ def run(TaskList,split_signal=" "):
                     s += f" copy {i[0]} : {i[1]} to {i[2]} : {i[3]} "
                 print("log:使用对象赋值" + s)
                 LogStep = 0
-
         elif TaskKey == "do":
             if(functionDic==None):
                 functionDic = globals()
@@ -499,10 +497,64 @@ if __name__=='__main__':
 #获取输入至对象
 #str str1 0 input str1 obj_print str1
 
-#0.0.3 全局环境 环境更新
+#0.0.3 环境更新
 
-#函数 支持重载关键字
-#function name A B ... ( print A print B  )
-#name ( A B ) + name
-#支持 数据持久化
+#新概念，环境交互。
+
+#解释器目前可以对变量和sohii函数进行注册（可覆盖），从而实现上下文之间的联系。
+#将变量A以name的名称注册到环境中
+#reg name A
+#以name的名称从环境中获取变量赋值给B
+#get name B
+
+#sohii函数 关键字func 支持重载关键字 函数内是新指令，属于局部变量。
+#支持 无参数 无输入 无输出 重载关键字 注册关键字 模式
+
+#标准格式
+#func name A B ... ( return A ) to D
+#调用方式
+#name A B ...  D
+
+#无输入模式
+#func name (int a 1 return a) to D
+#调用方式
+#name D
+
+#无输出模式
+#func name A B ... ( obj_print A  obj_print B )
+#调用方式
+#name A B ... 
+
+#无输出无输入格式
+#func name (print 1111)
+#调用方式
+#name
+
+#定义一次性可以打印两个对象的关键字
+#func print_2_obj A B (print A print B)
+#int a 1 int b 2 print_2_obj a b 
+
+#重载关键字以屏蔽原有关键字功能，从而限制嵌入python程序的sohii控制台控制的权限。
+#例子
+#在这之前实现了函数 !help !buy
+#关闭调试功能
+#func log ( )
+#此后log将无法正确运行
+#func stoplog ( )
+#此后logging将无法停止
+#func func( )
+#关闭定义函数功能
+
+#sohii文件源代码
+#支持换行模式(仅sohii文件)
+#注释模式
+
+#导入sohii文件功能,支持重复导入功能。
+#inc math.sohii
+#重载了add让add指令失效
+#func add ( )
+#重新导入sohii库文件
+#inc math.sohii
+#int a 1 int b 1 int c 0 add( a b ) c obj_print c
+
 
